@@ -1,10 +1,11 @@
 from google import genai
 from google.genai import types
 
-# Set your key first (never put it in this file or in screenshots):
-# PowerShell:  $env:GEMINI_API_KEY="your-key-here"
-client = genai.Client()
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 MODEL = "gemini-3.5-flash-lite"
 
 config = types.GenerateContentConfig(
